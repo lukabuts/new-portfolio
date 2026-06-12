@@ -5,9 +5,9 @@ import { site } from "../data/site";
 <div class="win shadow-glow mx-auto w-full max-w-lg font-mono text-sm">
   <div class="win-bar">
     <span class="win-dot bg-[#f47272]"></span>
-    <span class="win-dot bg-[#fbbf24]"></span>
-    <span class="win-dot bg-[#5eead4]"></span>
-    <span class="ml-2">visitor@portfolio — zsh</span>
+    <span class="win-dot bg-amber"></span>
+    <span class="win-dot bg-cyan"></span>
+    <span class="ml-2">visitor@portfolio - zsh</span>
   </div>
 
   <div class="space-y-1 p-5 leading-relaxed">
@@ -30,32 +30,35 @@ import { site } from "../data/site";
 </div>
 
 <script>
-  const command = "whoami --verbose";
-  const cmdEl = document.getElementById("hero-command");
-  const outputEl = document.getElementById("hero-output");
-  const cursorEl = document.getElementById("hero-cursor");
+  function initTerminalHero() {
+    const command = "whoami --verbose";
+    const cmdEl = document.getElementById("hero-command");
+    const outputEl = document.getElementById("hero-output");
+    const cursorEl = document.getElementById("hero-cursor");
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (cmdEl && outputEl) {
-    if (prefersReducedMotion) {
-      cmdEl.textContent = command;
-      outputEl.classList.remove("opacity-0");
-    } else {
-      let i = 0;
-      const type = () => {
-        if (i <= command.length) {
-          cmdEl.textContent = command.slice(0, i);
-          i++;
-          setTimeout(type, 55);
-        } else {
-          setTimeout(() => {
-            outputEl.classList.remove("opacity-0");
-            cursorEl?.classList.add("hidden");
-          }, 300);
-        }
-      };
-      setTimeout(type, 500);
+    if (cmdEl && outputEl) {
+      if (prefersReducedMotion) {
+        cmdEl.textContent = command;
+        outputEl.classList.remove("opacity-0");
+      } else {
+        let i = 0;
+        const type = () => {
+          if (i <= command.length) {
+            cmdEl.textContent = command.slice(0, i);
+            i++;
+            setTimeout(type, 55);
+          } else {
+            setTimeout(() => {
+              outputEl.classList.remove("opacity-0");
+              cursorEl?.classList.add("hidden");
+            }, 300);
+          }
+        };
+        setTimeout(type, 500);
+      }
     }
   }
+  document.addEventListener("astro:page-load", initTerminalHero);
 </script>

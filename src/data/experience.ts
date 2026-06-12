@@ -13,7 +13,7 @@ export const experience: ExperienceEntry[] = [
     title: "AI & Full-Stack Developer",
     company: "GeoSoft",
     link: "https://geosoft.ge",
-    period: "11/2024 — Present",
+    period: "11/2024 - Present",
     summary:
       "Building conversational AI products alongside full-stack web applications, with infrastructure running on Google Cloud.",
     highlights: [
@@ -37,7 +37,7 @@ export const experience: ExperienceEntry[] = [
     title: "Frontend Developer & Mentor",
     company: "UniLab",
     link: "https://www.linkedin.com/company/unilab-edu",
-    period: "11/2023 — 10/2024",
+    period: "11/2023 - 10/2024",
     summary:
       "Shipped client work as part of a five-person team, owning frontend builds end to end and supporting newer developers.",
     highlights: [

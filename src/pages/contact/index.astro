@@ -16,8 +16,8 @@ import { site } from "../../data/site";
       <div class="win">
         <div class="win-bar">
           <span class="win-dot bg-[#f47272]"></span>
-          <span class="win-dot bg-[#fbbf24]"></span>
-          <span class="win-dot bg-[#5eead4]"></span>
+          <span class="win-dot bg-amber"></span>
+          <span class="win-dot bg-cyan"></span>
           <span class="ml-2">contact.json</span>
         </div>
         <div class="space-y-4 p-5 font-mono text-sm">
@@ -50,8 +50,8 @@ import { site } from "../../data/site";
       <div class="win">
         <div class="win-bar">
           <span class="win-dot bg-[#f47272]"></span>
-          <span class="win-dot bg-[#fbbf24]"></span>
-          <span class="win-dot bg-[#5eead4]"></span>
+          <span class="win-dot bg-amber"></span>
+          <span class="win-dot bg-cyan"></span>
           <span class="ml-2">new_message.sh</span>
         </div>
         <form id="contact-form" class="space-y-5 p-6 sm:p-8">
@@ -114,19 +114,22 @@ import { site } from "../../data/site";
 </Layout>
 
 <script define:vars={{ email: site.email }}>
-  const form = document.getElementById("contact-form");
+  function initContactForm() {
+    const form = document.getElementById("contact-form");
 
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const name = data.get("name");
-    const senderEmail = data.get("email");
-    const subject = data.get("subject") || `Portfolio inquiry from ${name}`;
-    const message = data.get("message");
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = data.get("name");
+      const senderEmail = data.get("email");
+      const subject = data.get("subject") || `Portfolio inquiry from ${name}`;
+      const message = data.get("message");
 
-    const body = `${message}\n\n— ${name} (${senderEmail})`;
-    const mailto = `mailto:${email}?subject=${encodeURIComponent(String(subject))}&body=${encodeURIComponent(body)}`;
+      const body = `${message}\n\n- ${name} (${senderEmail})`;
+      const mailto = `mailto:${email}?subject=${encodeURIComponent(String(subject))}&body=${encodeURIComponent(body)}`;
 
-    window.location.href = mailto;
-  });
+      window.location.href = mailto;
+    });
+  }
+  document.addEventListener("astro:page-load", initContactForm);
 </script>

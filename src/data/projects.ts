@@ -17,7 +17,14 @@ export const projects: Project[] = [
     role: "Full Stack Developer",
     description:
       "An Ethereum wallet explorer for tracking balances and activity across chains. Connects via MetaMask, follows ERC-20 token balances, and lists paginated transaction history with live price data and caching across Ethereum, Polygon, and BNB.",
-    skills: ["React", "TypeScript", "Fastify", "Node.js", "ethers.js", "Blockchain"],
+    skills: [
+      "React",
+      "TypeScript",
+      "Fastify",
+      "Node.js",
+      "ethers.js",
+      "Blockchain",
+    ],
     categories: ["Full-Stack"],
     featured: true,
     liveDemoUrl: "https://wallet-explorer.vercel.app/",
@@ -27,8 +34,17 @@ export const projects: Project[] = [
     title: "Task Manager App",
     role: "Full Stack Developer & Designer",
     description:
-      "A task manager with full CRUD, profile images, a Georgian/English interface, and dark/light themes. Self-hosted on a Raspberry Pi behind NGINX and a Cloudflare Tunnel — built and shipped end to end, including infrastructure.",
-    skills: ["Laravel", "React", "Inertia.js", "PHP", "Tailwind CSS", "MySQL", "Cloudflare Tunnel", "NGINX"],
+      "A task manager with full CRUD, profile images, a Georgian/English interface, and dark/light themes. Self-hosted on a Raspberry Pi behind NGINX and a Cloudflare Tunnel - built and shipped end to end, including infrastructure.",
+    skills: [
+      "Laravel",
+      "React",
+      "Inertia.js",
+      "PHP",
+      "Tailwind CSS",
+      "MySQL",
+      "Cloudflare Tunnel",
+      "NGINX",
+    ],
     categories: ["Full-Stack"],
     featured: true,
     liveDemoUrl: "https://task-manager.lukabuts.site",
@@ -39,7 +55,15 @@ export const projects: Project[] = [
     role: "Full Stack Developer",
     description:
       "A storefront with category browsing, product details, a cart, and order placement, backed by a custom PHP GraphQL API on MySQL. The API is self-hosted on a Raspberry Pi and exposed securely through a Cloudflare Tunnel.",
-    skills: ["React", "TypeScript", "Tailwind CSS", "GraphQL", "PHP", "MySQL", "Cloudflare Tunnel"],
+    skills: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "GraphQL",
+      "PHP",
+      "MySQL",
+      "Cloudflare Tunnel",
+    ],
     categories: ["Full-Stack"],
     featured: true,
     liveDemoUrl: "https://scandiweb-test-luka.vercel.app/",
@@ -60,14 +84,15 @@ export const projects: Project[] = [
     title: "Galaxy Chronicles",
     role: "Frontend Developer & Designer",
     description:
-      "An explorer for the Star Wars universe — characters, films, starships, species, and planets — fetched from the SWAPI API with React Query and routed with React Router.",
+      "An explorer for the Star Wars universe - characters, films, starships, species, and planets - fetched from the SWAPI API with React Query and routed with React Router.",
     skills: ["React", "TypeScript", "Tailwind CSS", "React Query"],
     categories: ["Frontend"],
     liveDemoUrl: "https://devs-data-junior-frontend-recruitment.vercel.app/",
-    githubUrl: "https://github.com/lukabuts/DevsData-JuniorFrontend-Recruitment",
+    githubUrl:
+      "https://github.com/lukabuts/DevsData-JuniorFrontend-Recruitment",
   },
   {
-    title: "Jobly — Search Jobs",
+    title: "Jobly - Search Jobs",
     role: "Frontend Developer",
     description:
       "A job search app that pulls live listings from an API and gives candidates a focused interface for browsing and applying.",
@@ -118,4 +143,8 @@ export const projects: Project[] = [
   },
 ];
 
-export const categories: ProjectCategory[] = ["Full-Stack", "AI & Bots", "Frontend"];
+export const categories: ProjectCategory[] = [
+  "Full-Stack",
+  "AI & Bots",
+  "Frontend",
+];
