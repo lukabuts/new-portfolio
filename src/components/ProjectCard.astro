@@ -12,8 +12,8 @@ const { project } = Astro.props as Props;
   <div class="win-bar justify-between">
     <div class="flex items-center gap-2">
       <span class="win-dot bg-[#f47272]"></span>
-      <span class="win-dot bg-[#fbbf24]"></span>
-      <span class="win-dot bg-[#5eead4]"></span>
+      <span class="win-dot bg-amber"></span>
+      <span class="win-dot bg-cyan"></span>
     </div>
     <span class="truncate">~/projects/{project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}</span>
   </div>

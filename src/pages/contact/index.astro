@@ -114,22 +114,19 @@ import { site } from "../../data/site";
 </Layout>
 
 <script define:vars={{ email: site.email }}>
-  function initContactForm() {
-    const form = document.getElementById("contact-form");
+  const form = document.getElementById("contact-form");
 
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = data.get("name");
-      const senderEmail = data.get("email");
-      const subject = data.get("subject") || `Portfolio inquiry from ${name}`;
-      const message = data.get("message");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get("name");
+    const senderEmail = data.get("email");
+    const subject = data.get("subject") || `Portfolio inquiry from ${name}`;
+    const message = data.get("message");
 
-      const body = `${message}\n\n- ${name} (${senderEmail})`;
-      const mailto = `mailto:${email}?subject=${encodeURIComponent(String(subject))}&body=${encodeURIComponent(body)}`;
+    const body = `${message}\n\n- ${name} (${senderEmail})`;
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(String(subject))}&body=${encodeURIComponent(body)}`;
 
-      window.location.href = mailto;
-    });
-  }
-  document.addEventListener("astro:page-load", initContactForm);
+    window.location.href = mailto;
+  });
 </script>

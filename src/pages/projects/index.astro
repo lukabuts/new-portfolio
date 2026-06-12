@@ -49,37 +49,34 @@ const filters = ["All", ...categories];
 </Layout>
 
 <script>
-  function initProjectFilters() {
-    const buttons = document.querySelectorAll<HTMLButtonElement>("#filter-bar button");
-    const items = document.querySelectorAll<HTMLElement>(".project-item");
-    const emptyState = document.getElementById("empty-state");
-    const emptyFilter = document.getElementById("empty-filter");
+  const buttons = document.querySelectorAll<HTMLButtonElement>("#filter-bar button");
+  const items = document.querySelectorAll<HTMLElement>(".project-item");
+  const emptyState = document.getElementById("empty-state");
+  const emptyFilter = document.getElementById("empty-filter");
 
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter ?? "All";
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter ?? "All";
 
-        buttons.forEach((b) => {
-          const active = b === button;
-          b.setAttribute("aria-pressed", String(active));
-          b.classList.toggle("text-cyan", active);
-          b.classList.toggle("border-cyan/50", active);
-        });
-
-        let visibleCount = 0;
-        items.forEach((item) => {
-          const cats = item.dataset.categories?.split(",") ?? [];
-          const show = filter === "All" || cats.includes(filter);
-          item.classList.toggle("hidden", !show);
-          if (show) visibleCount++;
-        });
-
-        if (emptyState && emptyFilter) {
-          emptyFilter.textContent = filter;
-          emptyState.classList.toggle("hidden", visibleCount !== 0);
-        }
+      buttons.forEach((b) => {
+        const active = b === button;
+        b.setAttribute("aria-pressed", String(active));
+        b.classList.toggle("text-cyan", active);
+        b.classList.toggle("border-cyan/50", active);
       });
+
+      let visibleCount = 0;
+      items.forEach((item) => {
+        const cats = item.dataset.categories?.split(",") ?? [];
+        const show = filter === "All" || cats.includes(filter);
+        item.classList.toggle("hidden", !show);
+        if (show) visibleCount++;
+      });
+
+      if (emptyState && emptyFilter) {
+        emptyFilter.textContent = filter;
+        emptyState.classList.toggle("hidden", visibleCount !== 0);
+      }
     });
-  }
-  document.addEventListener("astro:page-load", initProjectFilters);
+  });
 </script>

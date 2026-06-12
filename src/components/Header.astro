@@ -79,20 +79,16 @@ const isActive = (href: string) => {
 </header>
 
 <script>
-  function initMobileMenu() {
-    const toggle = document.getElementById("menu-toggle");
-    const mobileNav = document.getElementById("mobile-nav");
-    const iconOpen = document.getElementById("icon-open");
-    const iconClose = document.getElementById("icon-close");
+  const toggle = document.getElementById("menu-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
 
-    toggle?.addEventListener("click", () => {
-      const isHidden = mobileNav?.classList.toggle("hidden");
-      mobileNav?.classList.toggle("flex");
-      iconOpen?.classList.toggle("hidden");
-      iconClose?.classList.toggle("hidden");
-      toggle.setAttribute("aria-expanded", String(!isHidden));
-    });
-  }
-
-  document.addEventListener("astro:page-load", initMobileMenu);
+  toggle?.addEventListener("click", () => {
+    const isHidden = mobileNav?.classList.toggle("hidden");
+    mobileNav?.classList.toggle("flex");
+    iconOpen?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", String(!isHidden));
+  });
 </script>
