@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionEyebrow from "../../components/SectionEyebrow.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects, categories } from "../../data/projects";
+
+const filters = ["All", ...categories];
+---
+
+<Layout title="Projects" description="A selection of full-stack, frontend, and AI projects by Luka Butskhrikidze.">
+  <section class="mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-24">
+    <SectionEyebrow
+      path="~/projects"
+      title="Things I've built"
+      description={`${projects.length} projects spanning full-stack apps, frontend builds, and conversational AI experiments — self-hosted, client work, and personal projects.`}
+    />
+
+    <div class="mb-8 flex flex-wrap gap-2" id="filter-bar">
+      {
+        filters.map((filter, i) => (
+          <button
+            type="button"
+            data-filter={filter}
+            class={`tag cursor-pointer transition-colors ${
+              i === 0 ? "border-cyan/50 text-cyan" : "hover:text-text"
+            }`}
+            aria-pressed={i === 0 ? "true" : "false"}
+          >
+            {filter}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2" id="project-grid">
+      {
+        projects.map((project) => (
+          <div data-categories={project.categories.join(",")} class="project-item">
+            <ProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+
+    <p id="empty-state" class="hidden py-16 text-center font-mono text-sm text-muted">
+      // no projects tagged "<span id="empty-filter"></span>" yet — check back soon.
+    </p>
+  </section>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("#filter-bar button");
+  const items = document.querySelectorAll<HTMLElement>(".project-item");
+  const emptyState = document.getElementById("empty-state");
+  const emptyFilter = document.getElementById("empty-filter");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter ?? "All";
+
+      buttons.forEach((b) => {
+        const active = b === button;
+        b.setAttribute("aria-pressed", String(active));
+        b.classList.toggle("text-cyan", active);
+        b.classList.toggle("border-cyan/50", active);
+      });
+
+      let visibleCount = 0;
+      items.forEach((item) => {
+        const cats = item.dataset.categories?.split(",") ?? [];
+        const show = filter === "All" || cats.includes(filter);
+        item.classList.toggle("hidden", !show);
+        if (show) visibleCount++;
+      });
+
+      if (emptyState && emptyFilter) {
+        emptyFilter.textContent = filter;
+        emptyState.classList.toggle("hidden", visibleCount !== 0);
+      }
+    });
+  });
+</script>

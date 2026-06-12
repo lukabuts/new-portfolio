@@ -1,0 +1,128 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TerminalHero from "../components/TerminalHero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import SectionEyebrow from "../components/SectionEyebrow.astro";
+import { skillGroups } from "../data/skills";
+import { projects } from "../data/projects";
+import { experience } from "../data/experience";
+
+const featuredProjects = projects.filter((p) => p.featured).slice(0, 4);
+---
+
+<Layout title="Home">
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-24">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <p class="path-label">~/home</p>
+        <h1 class="mt-4 font-display text-4xl font-bold leading-tight text-text sm:text-5xl lg:text-6xl">
+          Building <span class="text-cyan">web apps</span> and
+          <span class="text-magenta">AI chatbots</span> that feel effortless.
+        </h1>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+          I'm Luka — a self-taught full-stack developer turned AI developer at
+          GeoSoft, where I build conversational AI products on Google Cloud
+          alongside React, Next.js, and Laravel applications.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/projects/" class="btn-primary">view_projects()</a>
+          <a href="/contact/" class="btn-ghost">get_in_touch()</a>
+        </div>
+      </div>
+
+      <TerminalHero />
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <SectionEyebrow
+      path="~/skills.json"
+      title="What I work with"
+      description="A toolkit spanning frontend interfaces, backend services, conversational AI, and the infrastructure that ties it all together."
+    />
+
+    <div class="win">
+      <div class="win-bar">
+        <span class="win-dot bg-[#f47272]"></span>
+        <span class="win-dot bg-[#fbbf24]"></span>
+        <span class="win-dot bg-[#5eead4]"></span>
+        <span class="ml-2">skills.json</span>
+      </div>
+      <div class="grid divide-y divide-border sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-3">
+        {
+          skillGroups.map((group) => (
+            <div class="p-5">
+              <p class="font-mono text-xs text-cyan">{group.path}</p>
+              <h3 class="mt-2 font-display text-base font-semibold text-text">{group.label}</h3>
+              <div class="mt-3 flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <span class="tag">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <SectionEyebrow
+        path="~/projects --featured"
+        title="Selected work"
+        description="A few projects that show the range — from a self-hosted e-commerce stack to a multi-chain wallet explorer."
+      />
+      <a href="/projects/" class="btn-ghost mb-10">view_all()</a>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {featuredProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <!-- Experience snapshot -->
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <SectionEyebrow
+      path="~/experience --latest"
+      title="Currently"
+      description="A quick look at where I am now — full timeline on the experience page."
+    />
+
+    <div class="win p-6 sm:p-8">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 class="font-display text-xl font-semibold text-text">
+          {experience[0].title} <span class="text-muted">@</span> <span class="text-cyan">{experience[0].company}</span>
+        </h3>
+        <span class="font-mono text-xs text-muted">{experience[0].period}</span>
+      </div>
+      <p class="mt-3 text-sm leading-relaxed text-muted sm:text-base">{experience[0].summary}</p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {experience[0].stack.map((item) => <span class="tag border-magenta/30 text-magenta">{item}</span>)}
+      </div>
+      <a href="/experience/" class="mt-6 inline-flex items-center gap-1.5 font-mono text-sm text-cyan transition-colors hover:text-text">
+        full_history() <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="mx-auto max-w-6xl px-6 py-16">
+    <div class="win grid items-center gap-6 p-8 sm:grid-cols-[1fr_auto] sm:p-12">
+      <div>
+        <p class="path-label">~/contact</p>
+        <h2 class="mt-3 font-display text-2xl font-semibold text-text sm:text-3xl">
+          Got a project in mind?
+        </h2>
+        <p class="mt-2 max-w-lg text-sm text-muted sm:text-base">
+          Whether it's a full-stack build or a chatbot that needs a brain —
+          I'd love to hear about it.
+        </p>
+      </div>
+      <a href="/contact/" class="btn-primary justify-center">send_message()</a>
+    </div>
+  </section>
+</Layout>

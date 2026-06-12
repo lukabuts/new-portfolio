@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 — Not Found">
+  <section class="mx-auto flex max-w-6xl flex-col items-center px-6 py-32 text-center">
+    <div class="win w-full max-w-md font-mono text-sm">
+      <div class="win-bar">
+        <span class="win-dot bg-[#f47272]"></span>
+        <span class="win-dot bg-[#fbbf24]"></span>
+        <span class="win-dot bg-[#5eead4]"></span>
+        <span class="ml-2">404.sh</span>
+      </div>
+      <div class="space-y-2 p-6 text-left">
+        <p><span class="text-cyan">visitor@portfolio</span><span class="text-muted">:~$</span> cd {Astro.url.pathname}</p>
+        <p class="text-magenta">bash: cd: {Astro.url.pathname}: No such file or directory</p>
+        <p class="pt-2 text-muted">// the page you're looking for doesn't exist</p>
+      </div>
+    </div>
+
+    <a href="/" class="btn-primary mt-8">cd ~/home</a>
+  </section>
+</Layout>

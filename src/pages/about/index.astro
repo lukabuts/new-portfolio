@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionEyebrow from "../../components/SectionEyebrow.astro";
+import { site } from "../../data/site";
+
+const languages = [
+  { name: "Georgian", level: "Native", value: 100 },
+  { name: "English", level: "Proficient", value: 85 },
+  { name: "German", level: "Intermediate", value: 50 },
+];
+---
+
+<Layout title="About" description="A bit about Luka Butskhrikidze — self-taught full-stack and AI developer.">
+  <section class="mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-24">
+    <SectionEyebrow path="~/about" title="A little about me" />
+
+    <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div class="space-y-5 text-sm leading-relaxed text-muted sm:text-base">
+        <p>
+          I'm <span class="text-text">{site.name}</span>, a self-taught
+          full-stack developer based in {site.location}. I started out
+          building frontend interfaces — refactoring codebases, fixing bugs,
+          and shipping client projects as part of a small team — and grew
+          from there into full-stack work, covering everything from React
+          interfaces to Laravel APIs to the Linux servers they run on.
+        </p>
+        <p>
+          These days I'm a developer at <span class="text-cyan">GeoSoft</span>,
+          where my focus has shifted toward <span class="text-text">AI</span> —
+          designing and building conversational chatbots and deploying them on
+          <span class="text-text">Google Cloud Platform</span>. I still pick up
+          full-stack projects when they come up, so I'm just as comfortable
+          shaping a prompt flow as I am wiring up a database.
+        </p>
+        <p>
+          I'm largely self-taught, which means I've spent a lot of time in
+          documentation, sandboxes, and other people's code — and I try to
+          pass that on. I've mentored interns and junior developers through
+          workshops and one-on-one sessions, because the explanations that
+          helped me click are usually worth sharing.
+        </p>
+        <p>
+          Outside of the day job, I like building small self-hosted projects —
+          my task manager and product store both run on a Raspberry Pi tucked
+          away at home, tunneled to the internet through Cloudflare. If it
+          involves a terminal, a server, and something I can poke at, I'm
+          probably interested.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="win">
+          <div class="win-bar">
+            <span class="win-dot bg-[#f47272]"></span>
+            <span class="win-dot bg-amber"></span>
+            <span class="win-dot bg-cyan"></span>
+            <span class="ml-2">profile.json</span>
+          </div>
+          <div class="p-5 font-mono text-sm leading-relaxed">
+            <p><span class="text-violet">name</span><span class="text-muted">:</span> "{site.name}"</p>
+            <p><span class="text-violet">role</span><span class="text-muted">:</span> "Full-Stack & AI Developer"</p>
+            <p><span class="text-violet">company</span><span class="text-muted">:</span> "GeoSoft"</p>
+            <p><span class="text-violet">location</span><span class="text-muted">:</span> "{site.location}"</p>
+            <p><span class="text-violet">focus</span><span class="text-muted">:</span> [<br />
+              &nbsp;&nbsp;"Chatbots", "GCP",<br />
+              &nbsp;&nbsp;"React/Next.js", "Laravel"<br />
+              ]</p>
+            <p><span class="text-violet">self_taught</span><span class="text-muted">:</span> <span class="text-cyan">true</span></p>
+          </div>
+        </div>
+
+        <div class="win">
+          <div class="win-bar">
+            <span class="win-dot bg-[#f47272]"></span>
+            <span class="win-dot bg-amber"></span>
+            <span class="win-dot bg-cyan"></span>
+            <span class="ml-2">~/about/languages</span>
+          </div>
+          <div class="space-y-4 p-5">
+            {
+              languages.map((lang) => (
+                <div>
+                  <div class="flex items-center justify-between font-mono text-xs text-muted">
+                    <span class="text-text">{lang.name}</span>
+                    <span>{lang.level}</span>
+                  </div>
+                  <div class="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-surface-2">
+                    <div class="h-full rounded-full bg-linear-to-r from-cyan to-violet" style={`width: ${lang.value}%`} />
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
