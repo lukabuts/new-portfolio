@@ -1,3 +1,4 @@
+
 export const site = {
   name: "Luka Butskhrikidze",
   role: "Full-Stack & AI Developer",
@@ -7,6 +8,7 @@ export const site = {
   github: "https://github.com/lukabuts",
   linkedin: "https://linkedin.com/in/luka-butskhrikidze",
   website: "https://lukabuts.site",
+  resumeDownloadName: "Luka Butskhrikidze - Full Stack Developer.pdf",
 };
 
 export const nav = [

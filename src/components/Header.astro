@@ -1,6 +1,5 @@
 ---
 import { nav, site } from "../data/site";
-
 const currentPath = new URL(Astro.request.url).pathname;
 
 const isActive = (href: string) => {
@@ -37,9 +36,15 @@ const isActive = (href: string) => {
       }
     </nav>
 
-    <a href="/contact/" class="btn-ghost hidden md:inline-flex">
-      say_hello()
-    </a>
+    <div class="hidden items-center gap-3 md:flex">
+      <a href="./luka_butskhrikidze_resume.pdf" target="_blank" rel="noreferrer" class="btn-ghost">
+        view_resume()
+      </a>
+
+      <a href="/contact/" class="btn-ghost">
+        say_hello()
+      </a>
+    </div>
 
     <button
       id="menu-toggle"
@@ -74,6 +79,7 @@ const isActive = (href: string) => {
         </a>
       ))
     }
+    <a href="./luka_butskhrikidze_resume.pdf" target="_blank" rel="noreferrer" class="mt-2 block rounded-md border border-border px-3 py-2 text-text">view_resume()</a>
     <a href="/contact/" class="mt-2 block rounded-md border border-border px-3 py-2 text-text">say_hello()</a>
   </nav>
 </header>

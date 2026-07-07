@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import SectionEyebrow from "../../components/SectionEyebrow.astro";
 import { site } from "../../data/site";
+import resume from "../../../src/assets/luka_butskhrikidze_resume.pdf";
 ---
 
 <Layout title="Contact" description="Get in touch with Luka Butskhrikidze.">
@@ -40,6 +41,12 @@ import { site } from "../../data/site";
           <div>
             <p class="text-violet">linkedin</p>
             <a href={site.linkedin} target="_blank" rel="noreferrer" class="text-text transition-colors hover:text-cyan">linkedin.com/in/luka-butskhrikidze</a>
+          </div>
+          <div>
+            <p class="text-violet">resume</p>
+            <div class="flex flex-wrap gap-3">
+              <a href="./luka_butskhrikidze_resume.pdf" target="_blank" rel="noreferrer" class="text-text transition-colors hover:text-cyan">view_pdf()</a>
+            </div>
           </div>
           <div class="border-t border-border pt-4 text-muted">
             <span class="text-cyan">●</span> usually replies within a day or two

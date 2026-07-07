@@ -3,10 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import TerminalHero from "../components/TerminalHero.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import SectionEyebrow from "../components/SectionEyebrow.astro";
+import { site } from "../data/site";
 import { skillGroups } from "../data/skills";
 import { projects } from "../data/projects";
 import { experience } from "../data/experience";
-
+import resume from "../../src/assets/luka_butskhrikidze_resume.pdf";
 const featuredProjects = projects.filter((p) => p.featured).slice(0, 4);
 ---
 
@@ -28,6 +29,7 @@ const featuredProjects = projects.filter((p) => p.featured).slice(0, 4);
         <div class="mt-8 flex flex-wrap gap-4">
           <a href="/projects/" class="btn-primary">view_projects()</a>
           <a href="/contact/" class="btn-ghost">get_in_touch()</a>
+          <a href="./luka_butskhrikidze_resume.pdf" target="_blank" rel="noreferrer" class="btn-ghost">view_resume()</a>
         </div>
       </div>
 
