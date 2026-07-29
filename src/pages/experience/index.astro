@@ -16,16 +16,21 @@ import { experience } from "../../data/experience";
       {
         experience.map((job) => (
           <li class="relative">
-            <span class="absolute -left-[2.55rem] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-cyan bg-bg sm:-left-[3.05rem]">
+            <span class="absolute left-[-2.55rem] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-cyan bg-bg sm:left-[-3.05rem]">
               <span class="h-2 w-2 rounded-full bg-cyan" />
             </span>
 
             <div class="win p-6 sm:p-8">
               <div class="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 class="font-display text-xl font-semibold text-text">
-                  {job.title} <span class="text-muted">@</span> <a class="text-cyan hover:underline" href={job.link} target="_blank" rel="noopener noreferrer">
-                    {job.company}
-                  </a>
+                  {job.title} <span class="text-muted">@</span>{" "}
+                  {job.link ? (
+                    <a class="text-cyan hover:underline" href={job.link} target="_blank" rel="noopener noreferrer">
+                      {job.company}
+                    </a>
+                  ) : (
+                    <span class="text-cyan">{job.company}</span>
+                  )}
                 </h3>
                 <span class="tag">{job.period}</span>
               </div>
@@ -50,7 +55,7 @@ import { experience } from "../../data/experience";
       }
 
       <li class="relative">
-        <span class="absolute -left-[2.55rem] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-border bg-bg sm:-left-[3.05rem]">
+        <span class="absolute left-[-2.55rem] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-border bg-bg sm:left-[-3.05rem]">
           <span class="h-2 w-2 rounded-full bg-muted" />
         </span>
         <p class="font-mono text-sm text-muted">// earlier - self-taught, building personal projects to learn the stack.</p>

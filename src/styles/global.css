@@ -2,7 +2,7 @@
 
 @theme {
   /* ---- Breakpoints ---- */
-  --breakpoint-md: 960px;
+  --breakpoint-md: 1025px;
 
   /* ---- Color tokens ---- */
   --color-bg: #0b0e14;
